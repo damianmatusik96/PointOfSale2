@@ -2,7 +2,6 @@ package ImpaqTask;
 
 public class MainClass {
     private static boolean exitCode = false;
-    private static boolean isAvailable = false;
     public static void main(String[] args) {
         Product milk = new Product("Milk", 1234, 2.50);
         Product bread = new Product("Bread", 2345, 2.20);

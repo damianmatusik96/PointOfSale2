@@ -11,7 +11,8 @@ public class Reader {
     }
     public void setReaderValue() {
         System.out.println("Enter bar code: ");
-        System.out.println("//Available bar codes: 1234, 2345, 3456, 4567");
+        System.out.println("Available bar codes: 1234, 2345, 3456, 4567");
+        System.out.println("Press 0 to exit");
         inputBarCode = reader.nextInt();
     }
     public void closeReader() {
