@@ -19,12 +19,8 @@ public class MockDataBase implements ProductDAO{
 
     @Override
     public boolean findByBarCode(int scannedBarCode) {
-        if(dataBaseProducts.containsKey(scannedBarCode)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return dataBaseProducts.containsKey(scannedBarCode);
+
     }
 
 }
