@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Reader {
     private int inputBarCode;
+    private String barCode;
     private Scanner reader;
 
     public Reader() {
@@ -12,13 +13,28 @@ public class Reader {
     public void setReaderValue() {
         System.out.println("Enter bar code: ");
         System.out.println("Available bar codes: 1234, 2345, 3456, 4567");
-        System.out.println("Press 0 to exit");
-        inputBarCode = reader.nextInt();
+        inputBarCode = 0;
+        barCode = reader.next();
+        if(!"exit".equals(barCode)) {
+            convertBarCode();
+        }
+
     }
-    public void closeReader() {
+    public void convertBarCode() {
+        try {
+            inputBarCode = Integer.parseInt(barCode);
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+        public void closeReader() {
         reader.close();
     }
     public int getInputBarCode() {
         return inputBarCode;
+    }
+    public String getBarCode() {
+        return barCode;
     }
 }

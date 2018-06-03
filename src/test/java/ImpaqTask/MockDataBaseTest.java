@@ -1,32 +1,47 @@
 package ImpaqTask;
 
 
-import junit.framework.Assert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
 
-class MockDataBaseTest {
-    private Product milk;
-    private MockDataBase dataBase;
+public class MockDataBaseTest {
 
-    @BeforeEach
-    void setUp() {
-        milk = new Product("Milk", 1234, 2.50);
-        dataBase = new MockDataBase(milk);
-    }
+/*
 
     @Test
     void shouldSayReturnedProductIsEqualsWithExpected() {
-        Assert.assertEquals(milk, dataBase.getByBarCode(1234));
+        //given
+
+        //when
+
+        //then
+        Assertions.assertEquals(milk, dataBase.getByBarCode(1234));
     }
+*/
+
+    @Test
+    public void getByBarCodeShouldReturnProduct() {
+        //given
+        Product excpected = new Product("Milk", 123, 2.50);
+        ProductDAO dao = new MockDataBase(new Product("Milk", 123, 2.5));
+        //when
+        Product actual = dao.getByBarCode(123);
+        //then
+        Assertions.assertThat(actual).isEqualToComparingFieldByField(excpected);
+    }
+
+/*    @Test
+    void shouldSayReturnedProductIsNotEqualsWithExpected() {
+        Assertions.assertNotEquals(bread, dataBase.getByBarCode(1234));
+    }*//*
 
     @Test
     void shouldReturnTrueProductIsAvailable() {
-        Assert.assertTrue(dataBase.findByBarCode(1234));
+        Assertions.assertTrue(dataBase.findByBarCode(1234));
     }
 
     @Test
     void shouldReturnFalseProductIsntAvailable() {
-        Assert.assertFalse(dataBase.findByBarCode(2345));
-    }
+        Assertions.assertFalse(dataBase.findByBarCode(3456));
+    }*/
 }
