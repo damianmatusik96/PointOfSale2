@@ -6,28 +6,45 @@ import org.junit.Test;
 
 public class MockDataBaseTest {
 
-/*
-
     @Test
-    void shouldSayReturnedProductIsEqualsWithExpected() {
+    public void getByBarCodeShouldReturnTheSameProduct() {
         //given
-
+        Product expected = new Product("Milk", 1234, 2.50);
+        ProductDAO dao = new MockDataBase(new Product("Milk", 1234, 2.5));
         //when
-
+        Product actual = dao.getByBarCode(1234);
         //then
-        Assertions.assertEquals(milk, dataBase.getByBarCode(1234));
-    }
-*/
-
-    @Test
-    public void getByBarCodeShouldReturnProduct() {
-        //given
-        Product excpected = new Product("Milk", 123, 2.50);
-        ProductDAO dao = new MockDataBase(new Product("Milk", 123, 2.5));
-        //when
-        Product actual = dao.getByBarCode(123);
-        //then
-        Assertions.assertThat(actual).isEqualToComparingFieldByField(excpected);
+        Assertions.assertThat(actual).isEqualToComparingFieldByField(expected);
     }
 
+    @Test
+    public void getByBarCodeShouldReturnDifferentProducts() {
+        //given
+        Product unexpected = new Product("Milk", 1234, 2.50);
+        ProductDAO dao = new MockDataBase(new Product("Bread", 2345, 2.5));
+        //when
+        Product actual = dao.getByBarCode(2345);
+        //then
+        Assertions.assertThat(actual).isNotEqualTo(unexpected);
+    }
+
+    @Test
+    public void findByBarCodeShouldSayThatProductIsInDataBase() {
+        //given
+        ProductDAO dao = new MockDataBase(new Product("Milk", 1234, 2.50));
+        //when
+        boolean isAvailable = dao.findByBarCode(1234);
+        //then
+        Assertions.assertThat(isAvailable).isEqualTo(true);
+    }
+
+    @Test
+    public void findByBarCodeShouldSayThatProductIsNotInDataBase() {
+        //given
+        ProductDAO dao = new MockDataBase(new Product("Milk", 1234, 2.50));
+        //when
+        boolean isAvailable = dao.findByBarCode(2345);
+        //then
+        Assertions.assertThat(isAvailable).isEqualTo(false);
+    }
 }
