@@ -30,18 +30,4 @@ public class MockDataBaseTest {
         Assertions.assertThat(actual).isEqualToComparingFieldByField(excpected);
     }
 
-/*    @Test
-    void shouldSayReturnedProductIsNotEqualsWithExpected() {
-        Assertions.assertNotEquals(bread, dataBase.getByBarCode(1234));
-    }*//*
-
-    @Test
-    void shouldReturnTrueProductIsAvailable() {
-        Assertions.assertTrue(dataBase.findByBarCode(1234));
-    }
-
-    @Test
-    void shouldReturnFalseProductIsntAvailable() {
-        Assertions.assertFalse(dataBase.findByBarCode(3456));
-    }*/
 }
