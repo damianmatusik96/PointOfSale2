@@ -24,7 +24,8 @@ public class Reader {
         try {
             inputBarCode = Integer.parseInt(barCode);
         } catch (NumberFormatException e) {
-             String message = e.getMessage();
+            String message = e.getMessage();
+            System.out.println("Invalid bar-code");
             System.out.println("NumberFormatException " + message);
         }
     }

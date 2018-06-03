@@ -28,8 +28,8 @@ public class MainClass {
                 printer.addProductToPrinter(dataBaseDao.getByBarCode(reader.getInputBarCode()));
                 dataBaseDao.getByBarCode(reader.getInputBarCode()).display();
             }
-            else{
-                System.out.println("Invalid bar code, try again");
+            else {
+                System.out.println("Product not found, try again");
             }
         }
     }
