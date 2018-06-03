@@ -20,12 +20,12 @@ public class MockDataBaseTest {
     @Test
     public void getByBarCodeShouldReturnDifferentProducts() {
         //given
-        Product unexpected = new Product("Milk", 1234, 2.50);
+        Product expected = new Product("Milk", 1234, 2.50);
         ProductDAO dao = new MockDataBase(new Product("Bread", 2345, 2.5));
         //when
         Product actual = dao.getByBarCode(2345);
         //then
-        Assertions.assertThat(actual).isNotEqualTo(unexpected);
+        Assertions.assertThat(actual).isNotEqualTo(expected);
     }
 
     @Test

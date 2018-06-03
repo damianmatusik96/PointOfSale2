@@ -16,19 +16,19 @@ public class Reader {
         inputBarCode = 0;
         barCode = reader.next();
         if(!"exit".equals(barCode)) {
-            convertBarCode();
+            convertBarCode(barCode);
         }
 
     }
-    public void convertBarCode() {
+    public void convertBarCode(String barCode) {
         try {
             inputBarCode = Integer.parseInt(barCode);
         } catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
+             String message = e.getMessage();
+            System.out.println("NumberFormatException " + message);
         }
-
     }
-        public void closeReader() {
+    public void closeReader() {
         reader.close();
     }
     public int getInputBarCode() {
